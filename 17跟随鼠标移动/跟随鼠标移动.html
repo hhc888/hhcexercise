@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img.jpg"/>
+	</body>
+	<script type="text/javascript">
+		var img=document.getElementsByTagName("img")[0];
+		var x;
+		var y;
+		var startx=0;
+		var starty=0;
+		var times=0;
+		document.onclick=function(event){
+			clearInterval(times);
+			event=event || window.event;
+			x=event.clientX-img.offsetWidth/2;
+			y=event.clientY-img.offsetHeight/2;
+		  times=setInterval(fn,30);
+		  function fn(){
+			startx=startx+(x-startx)/10;
+			starty=starty+(y-starty)/10;
+//			console.log(startx);
+//			console.log(starty);
+			img.style.left=startx+"px";
+			img.style.top=starty+"px";
+		}
+		}
+	</script>
+</html>

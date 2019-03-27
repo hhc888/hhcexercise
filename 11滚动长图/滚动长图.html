@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 512px;
+				height: 400px;
+				margin: 100px auto;
+				border: 1px solid black;
+				overflow: hidden;
+				position: relative;
+			}
+			img{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			span{
+				display: inline-block;
+				width: 512px;
+				height: 200px;
+				cursor: pointer;
+			}
+			#top{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#bottom{
+				position: absolute;
+                top: 200px;
+                left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="mi.png" />
+			<span id="top"></span>
+			<span id="bottom"></span>
+		</div>
+	</body>
+	<script type="text/javascript">
+	var box = document.getElementById("box");
+	var img = document.getElementsByTagName("img")[0];
+	var spantop = document.getElementById("top");
+	var spanbottom = document.getElementById("bottom");
+	var times = null;
+	var num = 0;
+	spantop.onmouseover = function() {
+		clearInterval(times);
+		times = setInterval(function() {
+			if(num > -1070) {
+				num -= 5;
+			} else {
+				num = -1070;
+			}
+			img.style.top = num + "px";
+			//			console.log(num);
+		}, 30);
+		spanbottom.onmouseover = function() {
+			
+			times = setInterval(function() {
+				if(num < 0) {
+					num += 5;
+				} else {
+					num = 0;
+				}
+				img.style.top = num + "px";
+				//			console.log(num);
+			}, 30);
+		}
+		box.onmouseout=function(){
+			clearInterval(times);
+		}
+	}
+</script>
+</html>

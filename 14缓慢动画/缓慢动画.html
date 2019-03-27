@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 40px;
+				left: 0;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<button>开始运动</button>
+		<div id="box">
+			
+		</div>
+	</body>
+	<script>
+		var but=document.getElementsByTagName("button")[0];
+		var box=document.getElementById("box");
+		var start=0;
+		var target=600;
+		but.onclick=function(){
+			setInterval(fn,30);
+		}
+		function fn(){
+			start=start+(target-start)/10;
+			box.style.left=start+"px";
+		}
+	</script>
+</html>

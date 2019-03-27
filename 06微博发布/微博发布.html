@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+			margin: 0;
+			padding: 0;	
+			}
+			#box{
+				width: 580px;
+				padding: 10px;
+			    border: 1px solid black;
+			    margin: 100px auto;
+			}
+			textarea{
+				width: 580px;
+				height: 80px;
+				/*margin: 5px;*/
+				resize: none;
+			}
+			button{
+				width: 80px;
+				height: 30px;
+				background: darkmagenta;
+				margin-left: 500px;
+			}
+			ul{
+				list-style: none;
+			}
+			ul li{
+				line-height: 25px;
+				border-bottom: 1px dashed gray;
+			}
+			a{
+				text-decoration: none;
+				float: right;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<textarea></textarea>
+			<button id="but">发布</button>
+			<!--<ul>
+				<li>内容<a href="javascript:;">删除</a></li>
+				<li>内容<a href="javascript:;">删除</a></li>
+				<li>内容<a href="javascript:;">删除</a></li>
+				<li>内容<a href="javascript:;">删除</a></li>
+			</ul>-->
+		</div>
+	</body>
+	<script type="text/javascript">
+		var box=document.getElementById("box");
+		var textarea=document.getElementsByTagName("textarea")[0];
+		var but=document.getElementById("but");
+		var ul=document.createElement("ul");
+		box.appendChild(ul);
+		but.onclick=function(){
+			var value=textarea.value;
+			textarea.value="";
+			if(value==""){
+				alert("发布不能为空");
+				return;
+			}
+			var li=document.createElement("li");
+			li.innerHTML=value+"<a href=javascript:;>删除</a>";
+			if(ul.children<0){
+				ul.appendChild(li);
+			}else{
+				ul.insertBefore(li,ul.firstChild);
+			}
+			var as=document.getElementsByTagName("a");
+			for (var i=0;i<as.length;i++) {
+				as[i].onclick=function(){
+					ul.removeChild(this.parentNode);
+				}
+			}
+		}
+	</script>
+</html>

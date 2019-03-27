@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box,nav{
+				width: 100%;
+				margin: 0 auto;
+				text-align: center;
+			}
+			img{
+				vertical-align: top;
+			}
+			.fixed{
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+		<div id="top"><img src="images/top.png"/></div>
+		<nav><img src="images/nav.png"/></nav>
+		<div id="main"><img src="images/main.png"/></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var nav=document.getElementsByTagName("nav")[0];
+		var a=nav.offsetTop;
+		window.onscroll=function(){
+			var scrolllenght=window.pageYOffset || document.documentElement.scrollTop;
+			if(scrolllenght>=a){
+				nav.className="fixed";
+			}else{
+				nav.className="";
+			}
+		}
+	</script>
+</html>

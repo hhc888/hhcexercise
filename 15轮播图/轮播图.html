@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 490px;
+				height: 170px;
+				border: 1px solid black;
+				margin: 100px auto;
+				position: relative;
+				padding: 5px;
+			}
+			#content{
+				width: 490px;
+				height: 170px;
+				overflow: hidden;
+				position: relative;
+			}
+			img{
+				vertical-align: top;
+			}
+			#box ul{
+				list-style: none;
+				width: 500%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#box ul li{
+				float: left;
+			}
+			#box ol{
+				list-style: none;
+				position: absolute;
+				top: 145px;
+				left: 50%;
+				margin-left: -70px;
+			}
+			#box ol li{
+				width: 22px;
+				height: 22px;
+				margin-left: 6px;
+				line-height: 22px;
+				text-align: center;
+				background: white;
+				float: left;
+				cursor: pointer;
+			}
+			#box ol li.current{
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="content">
+			<ul>
+				<li><img src="images/01.jpg"/></li>
+				<li><img src="images/02.jpg"/></li>
+				<li><img src="images/03.jpg"/></li>
+				<li><img src="images/04.jpg"/></li>
+				<li><img src="images/05.jpg"/></li>
+			</ul>
+		</div>
+		<ol>
+			<li class="current">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ol>
+	</div>
+	</body>
+	<script type="text/javascript">
+		var box=document.getElementById("box");
+		var ul=document.getElementsByTagName("ul")[0];
+		var ollis=box.children[1].children;
+		var start=0;
+		var target=0;
+		var times=0;
+		for (var i=0;i<ollis.length;i++) {
+			ollis[i].index=i;
+			ollis[i].onmouseover=function(){
+				target=this.index*490;
+				for (var i=0;i<ollis.length;i++) {
+					ollis[i].className="";
+				}
+				this.className="current";
+			}
+		}
+		times=setInterval(fn,30);
+		function fn(){
+			start=start+(target-start)/10;
+			ul.style.left=-start+"px";
+		}
+	</script>
+</html>
